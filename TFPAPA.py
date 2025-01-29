@@ -155,10 +155,16 @@ def bgmi_command(message):
 
         # Notify that the attack will run for the default duration of 150 seconds, but display the input duration
         default_duration = 150
-        bot.send_message(
-            message.chat.id,
-            f"🚀𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} 𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ] \n\n❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
-        )
+        
+        remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
+
+bot.send_message(
+    message.chat.id,
+    f"🚀 𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} "
+    f"𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ]\n\n"
+    f"⚠️ 𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔 : {remaining_attacks} 𝙖𝙩𝙩𝙖𝙘𝙠𝙨 𝙡𝙚𝙛𝙩 𝙛𝙤𝙧 𝙩𝙤𝙙𝙖𝙮. ⚠️\n"
+    "❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
+)
 
         # Log the attack started message
         logging.info(f"Attack started by {user_name}: ./mrinmoy {target_ip} {target_port} {default_duration} 877")
