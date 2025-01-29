@@ -157,8 +157,10 @@ def bgmi_command(message):
         default_duration = 150
         bot.send_message(
             message.chat.id,
-            f"🚀𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣:- \n{target_ip} :\n{target_port} 𝙛𝙤𝙧 \n{default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 \n\n[ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ] \n\n\n𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔 : {remaining_attacks}\n\n❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
-        )
+            f"🚀 𝙃𝙞 {message.from_user.first_name}, 𝙮𝙤𝙪 𝙝𝙖𝙫𝙚 {remaining_attacks} 𝙖𝙩𝙩𝙖𝙘𝙠𝙨 𝙡𝙚𝙛𝙩 𝙛𝙤𝙧 𝙩𝙤𝙙𝙖𝙮.\n\n"
+            f"🚀 Attack started on {target_ip}:{target_port} for {default_duration} seconds [Original input: {user_duration} seconds].\n\n"
+    "❗️❗️ Please send feedback ❗️❗️"
+)
 
         # Log the attack started message
         logging.info(f"Attack started by {user_name}: ./mrinmoy {target_ip} {target_port} {default_duration} 877")
