@@ -156,11 +156,12 @@ def bgmi_command(message):
         # Notify that the attack will run for the default duration of 150 seconds, but display the input duration
         default_duration = 150
         remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
+
 bot.send_message(
-       message.chat.id,
-       f"🚀 𝙃𝙞 {message.from_user.first_name}, 𝙮𝙤𝙪 𝙝𝙖𝙫𝙚 {remaining_attacks} 𝙖𝙩𝙩𝙖𝙘𝙠𝙨 𝙡𝙚𝙛𝙩 𝙛𝙤𝙧 𝙩𝙤𝙙𝙖𝙮.\n\n"
-       f"🚀 Attack started on {target_ip}:{target_port} for {default_duration} seconds [Original input: {user_duration} seconds].\n\n"
-       "❗️❗️ Please send feedback ❗️❗️"
+    message.chat.id,
+    f"🚀 𝙃𝙞 {message.from_user.first_name}, 𝙮𝙤𝙪 𝙝𝙖𝙫𝙚 {remaining_attacks} 𝙖𝙩𝙩𝙖𝙘𝙠𝙨 𝙡𝙚𝙛𝙩 𝙛𝙤𝙧 𝙩𝙤𝙙𝙖𝙮.\n\n"
+    f"🚀 Attack started on {target_ip}:{target_port} for {default_duration} seconds [Original input: {user_duration} seconds].\n\n"
+    "❗️❗️ Please send feedback ❗️❗️"
 )
 
         # Log the attack started message
@@ -178,7 +179,9 @@ async def run_attack_command_async(target_ip, target_port, duration, user_durati
         process = await asyncio.create_subprocess_shell(command)
         await process.communicate()
 remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
+
 bot.send_message(CHANNEL_ID, f"🚀 𝘼𝙩𝙩𝙖𝙘𝙠 𝙤𝙣 {target_ip} : {target_port}  𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 ✅ [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨.\n\n𝗧𝗵𝗮𝗻𝗸𝗬𝗼𝘂 𝗙??𝗿 𝘂𝘀𝗶𝗻𝗴 𝗢𝘂𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 <> 𝗧𝗲𝗮𝗺 TF-FLASH™ & BHAI TERA 𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾K : {remaining_attacks}")
+
     except Exception as e:
         bot.send_message(CHANNEL_ID, f"Error running attack command: {e}")
 
