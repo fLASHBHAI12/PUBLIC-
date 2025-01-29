@@ -62,7 +62,7 @@ def handle_photo(message):
     # Send confirmation message for feedback received
     bot.send_message(
         message.chat.id,
-        f"✅ 𝙃𝙞 📸 𝙁𝙀𝙀𝘿𝘽𝙖𝘾𝙆 𝙍𝙚𝘾𝙀𝙄𝙑𝙚𝘿 𝙁𝙍𝙤𝙈 𝙐𝙎𝙚𝙍 :- @{message.from_user.first_name}, . ✅"
+        f"✅ 𝙃𝙞 📸 𝙁𝙀𝙀𝘿𝘽𝙖𝘾𝙆 𝙍𝙚𝘾𝙀𝙄𝙑𝙚𝘿 𝙁𝙍𝙤𝙈 𝙐𝙎𝙚𝙍 :- @{message.from_user.user_name} ✅"
     )
 
 @bot.message_handler(commands=['bgmi'])
