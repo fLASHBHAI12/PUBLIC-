@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Telegram bot token and channel ID
-TOKEN = '7759986591:AAES7gsdnLUVxa1VfGJU1E6httvldf4e0I0'  # Replace with your actual bot token
+TOKEN = '7475040161:AAGriywq9nXMEbF8b90N1ImTY0FfubV_5Ck'  # Replace with your actual bot token
 CHANNEL_ID = '-1002439558968'  # Replace with your specific channel or group ID
 # Initialize the bot
 bot = telebot.TeleBot(TOKEN)
@@ -64,6 +64,10 @@ def handle_photo(message):
         message.chat.id,
         f"✅ 𝙃𝙞 📸 𝙁𝙀𝙀𝘿𝘽𝙖𝘾𝙆 𝙍𝙚𝘾𝙀𝙄𝙑𝙚𝘿 𝙁𝙍𝙤𝙈 𝙐𝙎𝙚𝙍 :- @{message.from_user.first_name} ✅"
     )
+
+@bot.message_handler(commands=['start'])
+def welcome_message(message):
+    bot.send_message(message.chat.id, "⚡️𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 FLASH 𝗩𝗜𝗣 𝗗𝗗𝗢𝗦⚡️\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n👋 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 @{message.chat.username}!\n🆔 𝗬𝗼𝘂𝗿 𝗜𝗗: {user_id}\n\n🎮 𝗕𝗮𝘀𝗶𝗰 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:\n• /bgmi - 𝗟𝗮𝘂𝗻𝗰𝗵 𝗔𝘁𝘁𝗮𝗰𝗸\n• 📢 𝗢𝗪𝗡𝗘𝗥 : @TF_FLASH92 \n━━━━━━━━━━━━━━━━━━━━━━━━━━"")
 
 @bot.message_handler(commands=['bgmi'])
 def bgmi_command(message):
@@ -158,10 +162,11 @@ def bgmi_command(message):
         
         remaining_attacks = DAILY_ATTACK_LIMIT - user_attacks.get(user_id, 0)
         
-        user_id = message.from_user.id    
+        user_info = message.from_user
+        username = user_info.username if user_info.username else user_info.first_name    
         bot.send_message(
         message.chat.id,
-            f"🚀𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} 𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ] \n\n⚠️𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔⚠️ :- {remaining_attacks}\n\n★[𝔸𝕋𝕋𝔸ℂ𝕂𝔼ℝ 𝙉𝘼𝙈𝙀]★:- {message.from_user.first_name} \n\n❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
+            f"🚀𝙃𝙞 {message.from_user.first_name}, 𝘼𝙩𝙩𝙖𝙘𝙠 𝙨𝙩𝙖𝙧𝙩𝙚𝙙 𝙤𝙣 {target_ip} : {target_port} 𝙛𝙤𝙧 {default_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 [ 𝙊𝙧𝙞𝙜𝙞𝙣𝙖𝙡 𝙞𝙣𝙥𝙪𝙩: {user_duration} 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 ] \n\n⚠️𝙍𝙀𝙈𝘼𝙄𝙉𝙄𝙉𝙂 𝘼𝙏𝙏𝘼𝘾𝙆𝙎 𝙁𝙊𝙍 𝙏𝙊𝘿𝘼𝙔⚠️ :- {remaining_attacks}\n\n★[𝔸𝕋𝕋𝔸ℂ𝕂𝔼ℝ 𝙉𝘼𝙈𝙀]★:- @{username} \n\n❗️❗️ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙎𝙚𝙣𝙙 𝙁𝙚𝙚𝙙𝙗𝙖𝙘𝙠 ❗️❗️"
         )
 
         # Log the attack started message
